@@ -2,15 +2,23 @@ package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
-import hello.hellospring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 // 실제 사용자들이 사용할 기능을 하도록 만들어주는것
+@Service
 public class MemberService {
+    private  final MemberRepository memberRepository;
+
+    @Autowired
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
+
     //final은 상수취급이 되어서 값을 변경 불가능하다
-    private  final MemberRepository memberRepository = new MemoryMemberRepository();
     public Long join(Member member)
     {
         //같은 이름이 있는 중복 회원 x

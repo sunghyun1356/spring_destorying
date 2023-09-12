@@ -1,11 +1,14 @@
 package hello.hellospring.repository;
 
 import hello.hellospring.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 // 함수들을 선언해준다
 
 //MemoryMemberRepository는 interface에 있는 MemberRepository를 사용한다
+// @을 통해서 정의해준다는 느낌
+@Repository
 public class MemoryMemberRepository implements MemberRepository {
 
     //회원 정보를 저장하는 저장소이며 Long타입과 memeber를 가지는 hashmap이다
